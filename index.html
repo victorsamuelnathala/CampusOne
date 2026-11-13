@@ -1,184 +1,563 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusOne — One Campus. One Interface.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusOne — One Campus. One Interface.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              950: '#070B19',
+              900: '#0F172A',
+              800: '#1E293B',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .hero-gradient {
+      background: radial-gradient(circle at 15% 20%, rgba(79, 70, 229, 0.14) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
+                  #070B19;
+    }
+  </style>
 </head>
-<body class="bg-white text-slate-900 antialiased selection:bg-indigo-600 selection:text-white">
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-indigo-600 selection:text-white">
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-200">C</div>
-                <span class="text-xl font-bold tracking-tight text-slate-900">CampusOne</span>
-            </div>
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
-                <a href="#solution" class="hover:text-indigo-600 transition">Solution</a>
-                <a href="#modules" class="hover:text-indigo-600 transition">9 Modules</a>
-                <a href="#lifecycle" class="hover:text-indigo-600 transition">Lifecycle</a>
-                <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
-            </nav>
+  <!-- Navigation Header -->
+  <header class="fixed top-0 inset-x-0 z-40 glass-nav border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-600/20 group-hover:bg-indigo-700 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-display font-extrabold text-xl tracking-tight text-slate-900">Campus<span class="text-indigo-600">One</span></span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#problem-solution" class="hover:text-indigo-600 transition">Why CampusOne</a>
+        <a href="#interactive-demo" class="hover:text-indigo-600 transition">Live Preview</a>
+        <a href="#modules" class="hover:text-indigo-600 transition">9 Core Modules</a>
+        <a href="#pilot-cta" class="hover:text-indigo-600 transition">4-Week Pilot</a>
+        <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button onclick="openModal('demo')" class="hidden sm:inline-flex items-center px-3.5 py-2 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-100 transition">
+          Book Demo
+        </button>
+        <button onclick="openModal('pilot')" class="inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm shadow-indigo-600/25 transition">
+          Request 4-Week Pilot
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 text-xs font-semibold tracking-wide uppercase">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            Zero Auxiliary Hardware • Deploys in Days
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
+            One Campus.<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-300 to-emerald-400">One Interface.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl">
+            Eliminate operational fragmentation across your university. CampusOne consolidates student services, facility ticketing, and official communication into a single auditable ecosystem—built for day scholars, hostel residents, and university leadership.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3.5 pt-2">
+            <button onclick="openModal('pilot')" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold text-sm sm:text-base shadow-lg shadow-emerald-500/25 transition">
+              Request a 4-Week Campus Pilot
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </button>
+            <button onclick="openModal('demo')" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white font-semibold text-sm sm:text-base transition">
+              <svg class="w-4 h-4 text-indigo-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Book a Live Demo
+            </button>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
             <div>
-                <a href="#contact" class="bg-slate-900 hover:bg-indigo-600 text-white px-5 py-2.5 rounded-xl text-sm font-medium transition shadow-sm">Request Pilot</a>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-white">9-in-1</p>
+              <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Unified Modules</p>
             </div>
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-emerald-400">100%</p>
+              <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Auditable Lifecycle</p>
+            </div>
+            <div>
+              <p class="font-display text-2xl sm:text-3xl font-extrabold text-indigo-300">< 7 Days</p>
+              <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Campus Deployment</p>
+            </div>
+          </div>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="pt-36 pb-24 px-6 max-w-5xl mx-auto text-center">
-        <div class="inline-flex items-center space-x-2 bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-semibold mb-8 border border-indigo-100">
-            <span class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span>
-            <span>Zero-Hardware B2B SaaS Campus Management</span>
+        <div class="lg:col-span-6" id="interactive-demo">
+          <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-4 sm:p-6 shadow-2xl backdrop-blur">
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                <span class="ml-2 text-xs font-medium text-slate-400">campusone.edu / live-workspace</span>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-800 p-1 text-xs font-semibold">
+                <button id="tab-student" onclick="switchPreview('student')" class="px-2.5 py-1 rounded-md bg-indigo-600 text-white transition">Student View</button>
+                <button id="tab-admin" onclick="switchPreview('admin')" class="px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition">Admin Telemetry</button>
+              </div>
+            </div>
+
+            <!-- STUDENT VIEW PANEL -->
+            <div id="panel-student" class="space-y-4">
+              <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <div>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-400">Live Ticket #CMP-4082</span>
+                    <h3 class="text-sm sm:text-base font-bold text-white">Wi-Fi Router & AC Malfunction — Block B, Room 304</h3>
+                  </div>
+                  <button onclick="advanceTicketStage()" class="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-xs font-semibold text-white transition flex items-center gap-1.5">
+                    Simulate Next Stage
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-3 gap-2 my-4">
+                  <div id="stage-0" class="p-2.5 rounded-lg border border-emerald-500/50 bg-emerald-500/10 text-center transition-all">
+                    <div class="text-xs font-bold text-emerald-400">1. Submitted</div>
+                    <div class="text-[11px] text-slate-300 mt-0.5">09:14 AM • Geo-tagged</div>
+                  </div>
+                  <div id="stage-1" class="p-2.5 rounded-lg border border-indigo-500/60 bg-indigo-500/15 text-center transition-all">
+                    <div class="text-xs font-bold text-indigo-300">2. Assigned</div>
+                    <div class="text-[11px] text-slate-300 mt-0.5">09:19 AM • IT & Facilities</div>
+                  </div>
+                  <div id="stage-2" class="p-2.5 rounded-lg border border-slate-700 bg-slate-800/50 text-center opacity-60 transition-all">
+                    <div class="text-xs font-bold text-slate-400">3. Resolved</div>
+                    <div class="text-[11px] text-slate-400 mt-0.5">Pending Verification</div>
+                  </div>
+                </div>
+                <p id="ticket-status-note" class="text-xs text-slate-300 bg-slate-900/70 rounded-lg px-3 py-2 border border-slate-700/60">
+                  <span class="text-indigo-400 font-semibold">Live Update:</span> Assigned to Senior Network Technician (R. Sharma). Duplicate tickets automatically merged (4 prevented).
+                </p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="bg-slate-800/60 border border-slate-700/70 rounded-xl p-3.5">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xs font-semibold text-slate-400">Central Library Study Seats</span>
+                    <span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-emerald-500/20 text-emerald-400">LIVE</span>
+                  </div>
+                  <p class="text-lg font-bold text-white">68 / 120 <span class="text-xs font-normal text-slate-400">Available</span></p>
+                  <div class="w-full bg-slate-700 h-1.5 rounded-full mt-2 overflow-hidden">
+                    <div class="bg-emerald-400 h-full rounded-full" style="width: 56%"></div>
+                  </div>
+                </div>
+                <div class="bg-slate-800/60 border border-slate-700/70 rounded-xl p-3.5">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-xs font-semibold text-slate-400">Admin Registrar Queue</span>
+                    <span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-indigo-500/20 text-indigo-300">TOKEN #A14</span>
+                  </div>
+                  <p class="text-lg font-bold text-white">~6 mins <span class="text-xs font-normal text-slate-400">Est. Wait</span></p>
+                  <p class="text-[11px] text-slate-400 mt-1.5">No physical line • Alerts sent to phone</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ADMIN TELEMETRY PANEL -->
+            <div id="panel-admin" class="hidden space-y-4">
+              <div class="grid grid-cols-3 gap-3">
+                <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-3">
+                  <p class="text-[11px] text-slate-400">Avg. Resolution Time</p>
+                  <p class="text-xl font-bold text-emerald-400 mt-1">3.4 hrs <span class="text-[11px] font-medium">(-62%)</span></p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-3">
+                  <p class="text-[11px] text-slate-400">SLA Compliance</p>
+                  <p class="text-xl font-bold text-white mt-1">96.8%</p>
+                </div>
+                <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-3">
+                  <p class="text-[11px] text-slate-400">Duplicates Blocked</p>
+                  <p class="text-xl font-bold text-indigo-400 mt-1">142 / wk</p>
+                </div>
+              </div>
+              <div class="bg-slate-800/70 border border-slate-700 rounded-xl p-4 space-y-2.5">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Departmental Accountability Feed</p>
+                <div class="flex items-center justify-between text-xs py-1.5 border-b border-slate-700/60">
+                  <span class="text-slate-200 font-medium">Hostel Block C — Plumbing & Water</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">18/18 Resolved</span>
+                </div>
+                <div class="flex items-center justify-between text-xs py-1.5 border-b border-slate-700/60">
+                  <span class="text-slate-200 font-medium">Electronics Lab 2 — Oscilloscope Telemetry</span>
+                  <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-semibold">2 Active • On SLA</span>
+                </div>
+                <div class="flex items-center justify-between text-xs pt-1">
+                  <span class="text-slate-200 font-medium">Main Dining Hall — Mess Quality Index</span>
+                  <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-semibold">4.6 ★ (410 Ratings)</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-[1.1]">
-            One Campus. <br/><span class="text-indigo-600">One Interface.</span>
-        </h1>
-        <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Superseding disparate portals and chaotic chat groups to unify university operations, deliver absolute accountability, and elevate campus life.
+      </div>
+    </div>
+  </section>
+
+  <!-- Before vs. After Comparison Section -->
+  <section id="problem-solution" class="py-20 bg-white border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Operational Transformation</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+          Replace Campus Chaos with Verifiable Governance
+        </h2>
+        <p class="text-slate-600 mt-3 text-base sm:text-lg">
+          See how CampusOne bridges the daily operational gap between students, wardens, and university leadership.
         </p>
-        <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="#contact" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-8 py-4 rounded-xl shadow-xl shadow-indigo-200 transition">Schedule Institutional Pilot</a>
-            <a href="#modules" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-8 py-4 rounded-xl transition">Explore 9 Modules</a>
-        </div>
-    </section>
+      </div>
 
-    <!-- Solution / Problem Overview -->
-    <section id="solution" class="py-24 bg-slate-50 border-y border-slate-100">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="max-w-2xl mb-16">
-                <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">Eliminating Institutional Fragmentation</h2>
-                <p class="text-slate-600">Unmonitored threads, lengthy administrative queues, and blind facility bottlenecks replaced with real-time operational clarity.</p>
+      <div class="grid md:grid-cols-2 gap-8 items-stretch">
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-bold uppercase tracking-wide mb-5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+              Before CampusOne (Fragmented)
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="text-indigo-600 font-bold text-xl mb-4">01</div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Complete Visibility</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Real-time tracking for maintenance and facility requests across all hostels and academic blocks.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="text-indigo-600 font-bold text-xl mb-4">02</div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Verifiable Accountability</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Every operational request follows an auditable lifecycle from submission to resolution.</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="text-indigo-600 font-bold text-xl mb-4">03</div>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Zero Hardware Required</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Cloud-native deployment that integrates seamlessly with existing university infrastructure in days.</p>
-                </div>
-            </div>
+            <h3 class="font-display text-xl font-bold text-slate-900 mb-4">Disconnected Channels & Zero Visibility</h3>
+            <ul class="space-y-3.5 text-sm sm:text-base text-slate-600">
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✕</span>
+                <span>Maintenance grievances buried in unmonitored WhatsApp groups and paper registers.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✕</span>
+                <span>Students waste hours hunting for vacant study spaces and waiting in physical admin queues.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✕</span>
+                <span>Critical academic notices lost amid unofficial forwards and outdated notice boards.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✕</span>
+                <span>Leadership forced into reactive troubleshooting with no SLA tracking or audit trail.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-200 text-xs font-medium text-slate-500">
+            Result: High student frustration, duplicate complaints, and blind spots for administrators.
+          </div>
         </div>
-    </section>
 
-    <!-- 9 Modules Grid -->
-    <section id="modules" class="py-24 px-6 max-w-6xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">Nine Integrated Modules</h2>
-            <p class="text-slate-600">Everything students and administrators need, consolidated into a single application.</p>
+        <div class="rounded-2xl bg-navy-900 text-white border border-indigo-500/30 p-6 sm:p-8 shadow-xl shadow-indigo-950/10 flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wide mb-5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              With CampusOne (Unified)
+            </div>
+            <h3 class="font-display text-xl font-bold text-white mb-4">One Interface. Complete Accountability.</h3>
+            <ul class="space-y-3.5 text-sm sm:text-base text-slate-300">
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</span>
+                <span>Every ticket follows an auditable lifecycle: <strong class="text-white">Submitted → Assigned → Resolved</strong>.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</span>
+                <span>Real-time availability telemetry for libraries, labs, and study halls.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</span>
+                <span>Centralized broadcast notices with read-receipt analytics and verified sender badges.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">✓</span>
+                <span>Data-driven administrative oversight ensuring rapid resolution and SLA compliance.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800 text-xs font-medium text-emerald-400">
+            Result: 62% faster issue turnaround, transparent governance, and delighted campus residents.
+          </div>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-600 transition">
-                <h3 class="font-bold text-slate-900 mb-1">1. Issue Ticketing</h3>
-                <p class="text-sm text-slate-600">Transparent campus maintenance routing.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-600 transition">
-                <h3 class="font-bold text-slate-900 mb-1">2. Lost & Found</h3>
-                <p class="text-sm text-slate-600">Indexed digital item repository.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-600 transition">
-                <h3 class="font-bold text-slate-900 mb-1">3. Official Notices</h3>
-                <p class="text-sm text-slate-600">Centralized broadcast channel.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-600 transition">
-                <h3 class="font-bold text-slate-900 mb-1">4. Hostel Maintenance</h3>
-                <p class="text-sm text-slate-600">Dedicated dormitory repair tracking.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-600 transition">
-                <h3 class="font-bold text-slate-900 mb-1">5. Mess Feedback</h3>
-                <p class="text-sm text-slate-600">Actionable dining hall analytics.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-600 transition">
-                <h3 class="font-bold text-slate-900 mb-1">6. Space Availability</h3>
-                <p class="text-sm text-slate-600">Real-time study hall occupancy.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-600 transition">
-                <h3 class="font-bold text-slate-900 mb-1">7. Admin Queues</h3>
-                <p class="text-sm text-slate-600">Virtual ticketing for registrar desks.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-600 transition">
-                <h3 class="font-bold text-slate-900 mb-1">8. Equipment Telemetry</h3>
-                <p class="text-sm text-slate-600">Preventative lab hardware logging.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-600 transition">
-                <h3 class="font-bold text-slate-900 mb-1">9. Academic Sharing</h3>
-                <p class="text-sm text-slate-600">Curated peer resource exchange.</p>
-            </div>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Lifecycle Section -->
-    <section id="lifecycle" class="py-24 bg-slate-900 text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold tracking-tight mb-4">Verifiable Operational Lifecycle</h2>
-            <p class="text-slate-400 mb-12">Every request moves cleanly through transparent stages.</p>
-            <div class="grid md:grid-cols-3 gap-6 text-left">
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <span class="text-indigo-400 text-xs font-bold uppercase tracking-wider">Stage 01</span>
-                    <h3 class="text-lg font-bold mt-1 mb-2">Submitted</h3>
-                    <p class="text-sm text-slate-400">Logged instantly by student or resident with automated categorization.</p>
-                </div>
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <span class="text-indigo-400 text-xs font-bold uppercase tracking-wider">Stage 02</span>
-                    <h3 class="text-lg font-bold mt-1 mb-2">Assigned</h3>
-                    <p class="text-sm text-slate-400">Routed directly to the responsible facilities or admin personnel.</p>
-                </div>
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-                    <span class="text-indigo-400 text-xs font-bold uppercase tracking-wider">Stage 03</span>
-                    <h3 class="text-lg font-bold mt-1 mb-2">Resolved</h3>
-                    <p class="text-sm text-slate-400">Closed with timestamp verification and feedback rating.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- 9 Core Modules Section -->
+  <section id="modules" class="py-20 bg-slate-50 border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Unified Ecosystem</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+          9 Fully Integrated Campus Modules
+        </h2>
+        <p class="text-slate-600 mt-3 text-base sm:text-lg">
+          Replacing fragmented apps and chaotic portals with a single streamlined interface.
+        </p>
+      </div>
 
-    <!-- Contact & Institutional Inquiries -->
-    <section id="contact" class="py-24 px-6 max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">Institutional Inquiries & Pilot Deployment</h2>
-        <p class="text-slate-600 mb-10">Initiate a targeted four-week pilot within your academic block or hostel today.</p>
-        <div class="bg-slate-50 border border-slate-200 p-8 rounded-3xl inline-block text-left w-full max-w-xl shadow-sm">
-            <div class="space-y-6">
-                <div>
-                    <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Institutional Email</span>
-                    <p class="text-lg font-semibold text-slate-900 mt-1"><a href="mailto:Victor.25bce7708@vitapstudent.ac.in" class="hover:text-indigo-600">Victor.25bce7708@vitapstudent.ac.in</a></p>
-                </div>
-                <div>
-                    <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Direct Phone</span>
-                    <p class="text-lg font-semibold text-slate-900 mt-1"><a href="tel:9014857985" class="hover:text-indigo-600">+91 9014857985</a></p>
-                </div>
-                <div>
-                    <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Onboarding Specification</span>
-                    <p class="text-sm text-slate-600 mt-1">Zero-hardware cloud deployment with institutional email verification and SSO.</p>
-                </div>
-            </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-600 transition group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">01</div>
+          <h3 class="font-display text-lg font-bold text-slate-900 mb-1">Issue Ticketing</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Structured maintenance logging with transparent department routing and duplicate prevention.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-100 py-12 px-6">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between text-sm text-slate-500">
-            <div class="flex items-center space-x-2 mb-4 sm:mb-0">
-                <div class="w-6 h-6 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xs">C</div>
-                <span class="font-bold text-slate-900">CampusOne</span>
-            </div>
-            <p>© 2026 CampusOne Technologies. One Campus. One Interface.</p>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-600 transition group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">02</div>
+          <h3 class="font-display text-lg font-bold text-slate-900 mb-1">Indexed Lost & Found</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Searchable digital item repository connecting finders with verified owners instantly.</p>
         </div>
-    </footer>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-600 transition group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">03</div>
+          <h3 class="font-display text-lg font-bold text-slate-900 mb-1">Official University Notices</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Centralized broadcast announcements replacing unverified social chat forwards.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-600 transition group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">04</div>
+          <h3 class="font-display text-lg font-bold text-slate-900 mb-1">Hostel Maintenance</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Dedicated dormitory tracking for plumbing, electrical, and room upkeep grievances.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-600 transition group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">05</div>
+          <h3 class="font-display text-lg font-bold text-slate-900 mb-1">Structured Mess Feedback</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Actionable dining hall ratings and meal quality analytics for mess committees.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-600 transition group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">06</div>
+          <h3 class="font-display text-lg font-bold text-slate-900 mb-1">Live Space Availability</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Real-time occupancy tracking for libraries, reading halls, and computer labs.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-600 transition group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">07</div>
+          <h3 class="font-display text-lg font-bold text-slate-900 mb-1">Digital Admin Queues</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Virtual token ticketing for registrar, fee, and administrative service counters.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-600 transition group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">08</div>
+          <h3 class="font-display text-lg font-bold text-slate-900 mb-1">Equipment Telemetry</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Preventative maintenance logging for lab hardware, projectors, and facilities.</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-600 transition group">
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-sm mb-4 group-hover:bg-indigo-600 group-hover:text-white transition">09</div>
+          <h3 class="font-display text-lg font-bold text-slate-900 mb-1">Peer Academic Sharing</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Curated study notes, collaborative resource exchange, and peer mentoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- 4-Week Pilot CTA Section -->
+  <section id="pilot-cta" class="py-20 bg-gradient-to-br from-indigo-900 via-navy-900 to-navy-950 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent_50%)] pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Zero-Risk Deployment</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-extrabold tracking-tight mt-3 mb-6">
+        Ready to Transform Your Campus in Days?
+      </h2>
+      <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        Initiate a targeted 4-week pilot within a single academic block or hostel. Witness verifiable operational efficiency and faculty accountability firsthand.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button onclick="openModal('pilot')" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold text-base shadow-xl shadow-emerald-500/25 transition">
+          Schedule Your 4-Week Pilot
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </button>
+        <button onclick="openModal('demo')" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-base transition">
+          Talk to Institutional Sales
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Institutional Inquiries Section -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Institutional Inquiries</span>
+        <h2 class="font-display text-3xl font-extrabold text-slate-900 mt-2">Get in Touch with Our Team</h2>
+        <p class="text-slate-600 mt-2">Have questions about SSO integration or custom deployment? Reach out directly.</p>
+      </div>
+
+      <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm max-w-2xl mx-auto">
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 font-bold">@</div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Institutional Email</p>
+              <a href="mailto:Victor.25bce7708@vitapstudent.ac.in" class="text-lg font-bold text-slate-900 hover:text-indigo-600 transition">Victor.25bce7708@vitapstudent.ac.in</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 font-bold">📞</div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Direct Phone Line</p>
+              <a href="tel:9014857985" class="text-lg font-bold text-slate-900 hover:text-indigo-600 transition">+91 9014857985</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center shrink-0 font-bold">☁️</div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400">Onboarding Specification</p>
+              <p class="text-sm font-medium text-slate-700 mt-0.5">Zero-hardware cloud deployment with institutional email verification and SSO.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-sm">C</div>
+        <span class="font-display font-bold text-white text-lg">CampusOne</span>
+      </div>
+      <p class="text-xs text-slate-500">© 2026 CampusOne Technologies. All rights reserved. One Campus. One Interface.</p>
+      <div class="flex items-center gap-6 text-xs text-slate-400">
+        <a href="mailto:Victor.25bce7708@vitapstudent.ac.in" class="hover:text-white transition">Victor.25bce7708@vitapstudent.ac.in</a>
+        <a href="tel:9014857985" class="hover:text-white transition">+91 9014857985</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Simple Interactive Script & Modal Handler -->
+  <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 shadow-2xl relative">
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 text-xl font-bold">✕</button>
+      <h3 id="modal-title" class="font-display text-xl font-bold text-slate-900 mb-2">Request 4-Week Pilot</h3>
+      <p id="modal-desc" class="text-sm text-slate-600 mb-6">Enter your details to initiate a campus block rollout.</p>
+      <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Your Name / Title</label>
+          <input type="text" required placeholder="Dr. / Prof. / Student Rep" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-600">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Institutional Email</label>
+          <input type="email" required value="Victor.25bce7708@vitapstudent.ac.in" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-600">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">University / College Name</label>
+          <input type="text" required placeholder="e.g., VIT-AP University" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-indigo-600">
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-lg shadow-indigo-600/25 transition">
+          Confirm Request
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Preview Tab Switcher
+    function switchPreview(role) {
+      const studentTab = document.getElementById('tab-student');
+      const adminTab = document.getElementById('tab-admin');
+      const studentPanel = document.getElementById('panel-student');
+      const adminPanel = document.getElementById('panel-admin');
+
+      if (role === 'student') {
+        studentTab.className = "px-2.5 py-1 rounded-md bg-indigo-600 text-white transition";
+        adminTab.className = "px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition";
+        studentPanel.classList.remove('hidden');
+        adminPanel.classList.add('hidden');
+      } else {
+        adminTab.className = "px-2.5 py-1 rounded-md bg-indigo-600 text-white transition";
+        studentTab.className = "px-2.5 py-1 rounded-md text-slate-300 hover:text-white transition";
+        adminPanel.classList.remove('hidden');
+        studentPanel.classList.add('hidden');
+      }
+    }
+
+    // Ticket Stage Simulator
+    let currentStage = 0;
+    const stagesData = [
+      {
+        s0: "border-emerald-500/50 bg-emerald-500/10 text-emerald-400",
+        s1: "border-indigo-500/60 bg-indigo-500/15 text-indigo-300 opacity-60",
+        s2: "border-slate-700 bg-slate-800/50 text-slate-400 opacity-60",
+        note: "<span class='text-indigo-400 font-semibold'>Live Update:</span> Submitted via mobile app. Geo-tagged to Block B, Room 304."
+      },
+      {
+        s0: "border-slate-700 bg-slate-800/50 text-slate-400 opacity-60",
+        s1: "border-indigo-500/60 bg-indigo-500/15 text-indigo-300",
+        s2: "border-slate-700 bg-slate-800/50 text-slate-400 opacity-60",
+        note: "<span class='text-indigo-400 font-semibold'>Live Update:</span> Assigned to Senior Network Technician (R. Sharma). SLA timer active (4 hr target)."
+      },
+      {
+        s0: "border-slate-700 bg-slate-800/50 text-slate-400 opacity-60",
+        s1: "border-slate-700 bg-slate-800/50 text-slate-400 opacity-60",
+        s2: "border-emerald-500/50 bg-emerald-500/10 text-emerald-400",
+        note: "<span class='text-emerald-400 font-semibold'>Resolved & Verified:</span> Router rebooted and AC thermostat replaced. Student rating: ★★★★★ (5/5)."
+      }
+    ];
+
+    function advanceTicketStage() {
+      currentStage = (currentStage + 1) % 3;
+      const data = stagesData[currentStage];
+      
+      const el0 = document.getElementById('stage-0');
+      const el1 = document.getElementById('stage-1');
+      const el2 = document.getElementById('stage-2');
+      const note = document.getElementById('ticket-status-note');
+
+      el0.className = `p-2.5 rounded-lg border text-center transition-all ${data.s0}`;
+      el1.className = `p-2.5 rounded-lg border text-center transition-all ${data.s1}`;
+      el2.className = `p-2.5 rounded-lg border text-center transition-all ${data.s2}`;
+      note.innerHTML = data.note;
+    }
+
+    // Modal Handlers
+    function openModal(type) {
+      const modal = document.getElementById('modal');
+      const title = document.getElementById('modal-title');
+      const desc = document.getElementById('modal-desc');
+      if (type === 'pilot') {
+        title.innerText = "Request 4-Week Campus Pilot";
+        desc.innerText = "Initiate a zero-hardware rollout for your academic block or hostel.";
+      } else {
+        title.innerText = "Book a Live Demo";
+        desc.innerText = "Schedule a personalized walkthrough with our institutional solutions team.";
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert("Thank you! Your request has been logged successfully. Our team will contact you shortly at Victor.25bce7708@vitapstudent.ac.in.");
+      closeModal();
+    }
+  </script>
 </body>
 </html>
